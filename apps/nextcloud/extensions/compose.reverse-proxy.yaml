@@ -1,0 +1,16 @@
+services:
+  app:
+    environment:
+      APACHE_DISABLE_REWRITE_IP: "1"
+      NEXTCLOUD_TRUSTED_DOMAINS: "${NEXTCLOUD_PUBLIC_HOST:?Set NEXTCLOUD_PUBLIC_HOST in .env}"
+      TRUSTED_PROXIES: "${NEXTCLOUD_TRUSTED_PROXIES:?Set NEXTCLOUD_TRUSTED_PROXIES in .env}"
+      OVERWRITEPROTOCOL: https
+      OVERWRITECLIURL: "${NEXTCLOUD_PUBLIC_URL:?Set NEXTCLOUD_PUBLIC_URL in .env}"
+    networks:
+      - default
+      - shared
+
+networks:
+  shared:
+    external: true
+    name: "${SHARED_NETWORK_NAME:-stacklab-shared}"

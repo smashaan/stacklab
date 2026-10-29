@@ -1,0 +1,10 @@
+services:
+  adminer:
+    networks:
+      - default
+      - stacklab
+
+networks:
+  stacklab:
+    name: "${STACKLAB_NETWORK:-stacklab}"
+    external: true

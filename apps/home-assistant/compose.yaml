@@ -1,0 +1,15 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    restart: unless-stopped
+    stop_grace_period: 60s
+    privileged: true
+    network_mode: host
+    environment:
+      TZ: "${HOME_ASSISTANT_TIME_ZONE:-Etc/UTC}"
+    volumes:
+      - "${HOME_ASSISTANT_CONFIG_SOURCE:-config}:/config"
+      - /etc/localtime:/etc/localtime:ro
+
+volumes:
+  config:

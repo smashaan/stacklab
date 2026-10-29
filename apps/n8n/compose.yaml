@@ -1,0 +1,20 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:2.45.5
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      N8N_ENCRYPTION_KEY: "${N8N_ENCRYPTION_KEY:?Set N8N_ENCRYPTION_KEY in .env}"
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+      N8N_RESTRICT_FILE_ACCESS_TO: /files
+      GENERIC_TIMEZONE: "${N8N_TIME_ZONE:-Etc/UTC}"
+      TZ: "${N8N_TIME_ZONE:-Etc/UTC}"
+    ports:
+      - "${N8N_BIND_ADDRESS:-127.0.0.1}:${N8N_PORT:-5678}:5678"
+    volumes:
+      - "${N8N_DATA_SOURCE:-data}:/home/node/.n8n"
+      - "${N8N_FILES_SOURCE:-files}:/files"
+
+volumes:
+  data:
+  files:

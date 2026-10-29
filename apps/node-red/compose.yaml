@@ -1,0 +1,19 @@
+services:
+  node-red:
+    image: nodered/node-red:5.0.9-24
+    restart: unless-stopped
+    environment:
+      TZ: "${NODE_RED_TIME_ZONE:-Etc/UTC}"
+      NODE_OPTIONS: "${NODE_RED_NODE_OPTIONS:---max-old-space-size=512}"
+      NODE_RED_CREDENTIAL_SECRET: "${NODE_RED_CREDENTIAL_SECRET:?Set NODE_RED_CREDENTIAL_SECRET in .env}"
+      NODE_RED_ADMIN_USER: "${NODE_RED_ADMIN_USER:?Set NODE_RED_ADMIN_USER in .env}"
+      NODE_RED_ADMIN_PASSWORD_HASH: "${NODE_RED_ADMIN_PASSWORD_HASH:?Set NODE_RED_ADMIN_PASSWORD_HASH in .env}"
+      NODE_RED_ENABLE_PROJECTS: "${NODE_RED_ENABLE_PROJECTS:-false}"
+    ports:
+      - "${NODE_RED_BIND_ADDRESS:-127.0.0.1}:${NODE_RED_PORT:-1880}:1880"
+    volumes:
+      - "${NODE_RED_DATA_SOURCE:-data}:/data"
+      - ./config/settings.js:/data/settings.js:ro
+
+volumes:
+  data:

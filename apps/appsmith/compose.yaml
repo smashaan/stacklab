@@ -1,0 +1,12 @@
+services:
+  appsmith:
+    image: index.docker.io/appsmith/appsmith-ee:v2.5.1
+    restart: unless-stopped
+    ports:
+      - "${APPSMITH_BIND_ADDRESS:-127.0.0.1}:${APPSMITH_HTTP_PORT:-8080}:80"
+      - "${APPSMITH_BIND_ADDRESS:-127.0.0.1}:${APPSMITH_HTTPS_PORT:-8443}:443"
+    volumes:
+      - "${APPSMITH_STACKS_SOURCE:-appsmith-stacks}:/appsmith-stacks"
+
+volumes:
+  appsmith-stacks:

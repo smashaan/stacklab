@@ -1,0 +1,11 @@
+# Remove this file when the app does not need cross-project communication.
+services:
+  app:
+    networks:
+      - default
+      - stacklab
+
+networks:
+  stacklab:
+    name: "${STACKLAB_NETWORK:-stacklab}"
+    external: true

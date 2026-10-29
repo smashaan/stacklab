@@ -1,0 +1,18 @@
+services:
+  latex:
+    image: texlive/texlive:latest
+    init: true
+    user: "${LATEX_USER_ID:-1000}:${LATEX_GROUP_ID:-1000}"
+    working_dir: /workdir
+    environment:
+      HOME: /tmp
+    command: [latexmk, -pdf, -interaction=nonstopmode, -halt-on-error, main.tex]
+    network_mode: none
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    volumes:
+      - "${LATEX_WORKSPACE_SOURCE:-./workspace}:/workdir"

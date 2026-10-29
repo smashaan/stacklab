@@ -1,0 +1,16 @@
+# Local deployment settings and secrets; keep public examples.
+.env
+.env.*
+!.env.example
+*.local.env
+compose.override.yaml
+
+# Runtime data must live outside the checkout. Catch common accidental paths.
+**/data/
+**/volumes/
+**/backups/
+**/stirling-data/
+*.log
+__pycache__/
+*.py[cod]
+.DS_Store

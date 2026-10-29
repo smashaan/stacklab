@@ -1,0 +1,4 @@
+services:
+  homeassistant:
+    devices:
+      - "${HOME_ASSISTANT_DEVICE:?Set HOME_ASSISTANT_DEVICE to an absolute device path}:${HOME_ASSISTANT_DEVICE:?Set HOME_ASSISTANT_DEVICE to an absolute device path}"

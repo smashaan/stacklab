@@ -1,0 +1,4 @@
+services:
+  homeassistant:
+    volumes:
+      - /run/dbus:/run/dbus:ro

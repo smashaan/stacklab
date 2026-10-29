@@ -1,0 +1,14 @@
+services:
+  sftpgo:
+    image: drakkan/sftpgo:v2.7.6
+    restart: unless-stopped
+    ports:
+      - "${SFTPGO_WEB_BIND_ADDRESS:-127.0.0.1}:${SFTPGO_WEB_PORT:-8080}:8080"
+      - "${SFTPGO_SFTP_BIND_ADDRESS:-127.0.0.1}:${SFTPGO_SFTP_PORT:-2022}:2022"
+    volumes:
+      - "${SFTPGO_DATA_SOURCE:-data}:/srv/sftpgo"
+      - "${SFTPGO_HOME_SOURCE:-home}:/var/lib/sftpgo"
+
+volumes:
+  data:
+  home:

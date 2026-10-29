@@ -1,0 +1,31 @@
+services:
+  stirling-pdf:
+    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest
+    restart: unless-stopped
+    ports:
+      - "${STIRLING_PDF_BIND_ADDRESS:-127.0.0.1}:${STIRLING_PDF_PORT:-8080}:8080"
+    volumes:
+      - "${STIRLING_PDF_CONFIGS_SOURCE:-configs}:/configs"
+      - "${STIRLING_PDF_LOGS_SOURCE:-logs}:/logs"
+      - "${STIRLING_PDF_CUSTOM_FILES_SOURCE:-custom-files}:/customFiles"
+      - "${STIRLING_PDF_PIPELINE_SOURCE:-pipeline}:/pipeline"
+      - "${STIRLING_PDF_STORAGE_SOURCE:-storage}:/storage"
+      - "${STIRLING_PDF_TESSDATA_SOURCE:-tessdata}:/usr/share/tessdata"
+    environment:
+      SECURITY_ENABLELOGIN: "true"
+      SYSTEM_DEFAULTLOCALE: "${STIRLING_PDF_LOCALE:-en-GB}"
+    mem_limit: 4g
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/api/v1/info/status | grep -q 'UP'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+volumes:
+  configs:
+  logs:
+  custom-files:
+  pipeline:
+  storage:
+  tessdata:

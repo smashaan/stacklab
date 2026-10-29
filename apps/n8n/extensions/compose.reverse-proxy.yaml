@@ -1,0 +1,8 @@
+services:
+  n8n:
+    environment:
+      N8N_HOST: "${N8N_PUBLIC_HOST:?Set N8N_PUBLIC_HOST in .env}"
+      N8N_PROTOCOL: https
+      N8N_EDITOR_BASE_URL: "${N8N_PUBLIC_URL:?Set N8N_PUBLIC_URL in .env}"
+      N8N_WEBHOOK_URL: "${N8N_PUBLIC_URL:?Set N8N_PUBLIC_URL in .env}"
+      N8N_PROXY_HOPS: "${N8N_PROXY_HOPS:-1}"

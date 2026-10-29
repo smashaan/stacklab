@@ -1,0 +1,10 @@
+services:
+  mosquitto:
+    networks:
+      - default
+      - shared
+
+networks:
+  shared:
+    external: true
+    name: "${SHARED_NETWORK_NAME:-stacklab-shared}"

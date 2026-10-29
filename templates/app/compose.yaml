@@ -1,0 +1,19 @@
+# Maintainer: replace the image, internal port and persistent path.
+# Keep only settings supported by the selected application.
+# This is a scaffold, not a runnable application.
+services:
+  app:
+    # Replace this with the one upstream stable image channel supported here.
+    image: ghcr.io/<org>/<application>:latest
+    restart: unless-stopped
+    ports:
+      - "${APP_BIND_ADDRESS:-127.0.0.1}:${APP_PORT:-8080}:8080"
+    volumes:
+      - "${APP_DATA_SOURCE:-app-data}:/data"
+    # Add native application settings explicitly under environment.
+    # Require secrets with ${NATIVE_PASSWORD:?Set NATIVE_PASSWORD in .env}.
+    # Add an application-specific healthcheck after verifying its command.
+    # Add a configurable memory limit only with justified sizing guidance.
+
+volumes:
+  app-data:
