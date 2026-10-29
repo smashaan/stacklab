@@ -1,0 +1,10 @@
+services:
+  nginx:
+    networks:
+      - default
+      - proxy
+
+networks:
+  proxy:
+    name: "${NGINX_PROXY_NETWORK:-stacklab-proxy}"
+    external: true

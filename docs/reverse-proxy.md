@@ -1,6 +1,6 @@
 # Reverse proxy
 
-Many self-hosted applications can be exposed through a reverse proxy such as Caddy or Traefik. This repository keeps reverse-proxy integration optional so that each stack remains usable without a particular domain or proxy setup.
+Many self-hosted applications can be exposed through a reverse proxy such as Caddy, nginx or Traefik. This repository keeps reverse-proxy integration optional so that each stack remains usable without a particular domain or proxy setup.
 
 ## Recommended approach
 

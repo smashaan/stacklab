@@ -13,6 +13,7 @@ Apps are standalone products. Stacks connect separate products for a shared goal
 | [Mosquitto](../apps/mosquitto/README.md) | Provide MQTT messaging |
 | [n8n](../apps/n8n/README.md) | Automate workflows |
 | [Nextcloud](../apps/nextcloud/README.md) | Host files and collaboration tools |
+| [nginx](../apps/nginx/README.md) | Serve static sites and proxy HTTP traffic |
 | [Node-RED](../apps/node-red/README.md) | Build event-driven automations |
 | [Portainer](../apps/portainer/README.md) | Manage container environments |
 | [PostgreSQL](../apps/postgres/README.md) | Run a relational database |
