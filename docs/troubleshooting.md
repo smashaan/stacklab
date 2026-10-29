@@ -1,6 +1,6 @@
 # Shared troubleshooting
 
-Run these commands from the relevant app or stack directory. Replace `app` with the Compose service name shown in that deployment's `compose.yaml`.
+Run these commands from the relevant app directory. Replace `app` with the Compose service name shown in that deployment's `compose.yaml`.
 
 ## Check deployment status
 
@@ -44,7 +44,7 @@ This does not remove named volumes by default.
 ## Remove containers and named volumes
 
 > [!WARNING]
-> This deletes persistent data managed by the stack’s named volumes.
+> This deletes persistent data managed by the deployment's named volumes.
 
 ```bash
 docker compose down -v

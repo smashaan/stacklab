@@ -1,5 +1,3 @@
-<img src="../../docs/assets/traefik/traefik_logo.svg" alt="Traefik logo" width="150">
-
 # Traefik
 
 Traefik is a reverse proxy and load balancer that discovers explicitly enabled Docker services from container labels. This setup provides local HTTP routing, an authenticated dashboard and an optional Let's Encrypt HTTPS extension.

@@ -1,5 +1,3 @@
-<img src="../../docs/assets/adminer/adminer_logo.svg" alt="Adminer logo" width="150">
-
 # Adminer
 
 Adminer is a browser interface for inspecting and managing databases. This deployment runs the standalone official image independently and can connect to a reachable database server or to another Stacklab app through the optional shared-network extension.

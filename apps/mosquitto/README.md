@@ -1,5 +1,3 @@
-<img src="../../docs/assets/mosquitto/eclipsemosquitto_logo.svg" alt="Eclipse Mosquitto logo" width="150">
-
 # Eclipse Mosquitto
 
 Mosquitto is a lightweight MQTT broker for messaging between sensors, automation systems and other clients. This setup provides one authenticated MQTT listener with durable session and retained-message storage.
@@ -48,7 +46,8 @@ Verify publish and subscribe in an interactive container shell:
 docker compose exec -it mosquitto sh
 
 # Run these inside the container. The password is hidden and is not literal in history.
-read -s -p "Password: " MQTT_PASSWORD; echo
+read -s -p "Password: " MQTT_PASSWORD
+echo
 mosquitto_pub -h localhost -t stacklab/check -m working -r -u stacklab -P "$MQTT_PASSWORD"
 mosquitto_sub -h localhost -t stacklab/check -u stacklab -P "$MQTT_PASSWORD" -C 1
 mosquitto_pub -h localhost -t stacklab/check -n -r -u stacklab -P "$MQTT_PASSWORD"

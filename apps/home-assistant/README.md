@@ -1,5 +1,3 @@
-<img src="../../docs/assets/home-assistant/home-assistant_logo.svg" alt="Home Assistant logo" width="150">
-
 # Home Assistant
 
 Home Assistant is a local home-automation platform for connecting devices, building automations and controlling a smart home. This setup runs Home Assistant Container. It does not include the Supervisor or Home Assistant apps and add-ons.

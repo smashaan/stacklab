@@ -1,5 +1,3 @@
-<img src="../../docs/assets/appsmith/appsmith_logo.svg" alt="Appsmith logo" width="150">
-
 # Appsmith
 
 Build internal tools, dashboards and administrative applications that connect to databases and APIs. This deployment runs Appsmith Commercial Edition and its bundled supporting services in one container.

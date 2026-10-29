@@ -6,16 +6,13 @@ applications.
 
 ## Add or improve a deployment
 
-1. Check `apps/`, `stacks/` and open issues for duplicates.
+1. Check `apps/` and open issues for duplicates.
 2. Read the [deployment standard](docs/standards.md).
-3. Choose the template from the repository root. Use the app template for one
-   primary product and services required for that app to run. Use the stack
-   template when multiple products work together toward a shared goal.
+3. Copy the app template for one primary product and any services required for
+   that product to run.
 
    ```bash
    cp -r templates/app apps/<app-name>
-   # or
-   cp -r templates/stack stacks/<stack-name>
    ```
 
 4. Replace every placeholder and remove unused settings. Use lowercase,
@@ -43,8 +40,12 @@ applications.
    values that already have working Compose defaults so copying the example does
    not pin settings the user did not choose to change.
    Finish with `About this setup`. Link to upstream documentation, source, container image, release notes, license, support and security policy when available. Explain briefly which upstream example was followed and what this repository changed. Link to the upstream license instead of copying it.
-   Logos are optional. When one is included, use a short descriptive `alt` value,
-   prefer an official asset and record attribution when its license requires it.
+   Decorative product logos are not required. Add a deployment-specific image
+   under its `assets/` directory only when it explains a concrete instruction,
+   expected result, architecture or workflow. Keep repository-wide media in
+   `docs/assets/common/`. Use short descriptive alternative text, optimize images,
+   sanitize screenshots and record the source, license and attribution when
+   required. Do not create empty `docs/` or `assets/` directories.
 6. Validate from the application directory:
 
    ```bash
@@ -54,8 +55,8 @@ applications.
 
    Omit the second command if there is no environment example. Supply temporary,
    non-secret test values where secrets are required. Also check documented
-   extensions with the base file. For a stack, confirm that the base deployment
-   still delivers its stated goal without extensions. Avoid sharing resolved
+   extensions with the base file. Confirm that the base deployment still
+   delivers its stated purpose without extensions. Avoid sharing resolved
    configuration containing real secrets.
 
    When a deployment exposes persistent source variables, validate the defaults

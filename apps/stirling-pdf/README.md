@@ -1,5 +1,3 @@
-<img src="../../docs/assets/stirling-pdf/stirling-pdf_logo.png" alt="Stirling PDF logo" width="150">
-
 # Stirling PDF
 
 Merge, split, convert and OCR PDFs in your browser. This app runs one upstream Stirling PDF container with persistent settings and documents.
@@ -126,4 +124,3 @@ Compared with this repository's older example, storage defaults to named volumes
 - [License and licensing details](https://github.com/Stirling-Tools/Stirling-PDF/blob/main/LICENSE)
 - [Upstream support and issue reporting](https://github.com/Stirling-Tools/Stirling-PDF/issues)
 - [Security policy](https://github.com/Stirling-Tools/Stirling-PDF/blob/main/SECURITY.md)
-- [Optional screenshot](../../docs/assets/stirling-pdf/stirling-pdf_dashboard.png)

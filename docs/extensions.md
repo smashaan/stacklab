@@ -2,9 +2,9 @@
 
 This repository uses three configuration layers. `.env` changes supported values inside the maintained deployment, including persistent mount sources. Files under `extensions/` enable maintained optional capabilities. An untracked `compose.override.yaml` belongs to the user and handles changes that the published configuration does not support.
 
-Each app or stack starts from its base `compose.yaml`. Files under `extensions/` add one optional service or structural change without modifying that base file.
+Each app starts from its base `compose.yaml`. Files under `extensions/` add one optional service or structural change without modifying that base file.
 
-An app extension preserves the app's primary purpose. A stack extension preserves the stack's stated goal. If a service is required for that goal, put it directly in the stack's base Compose file.
+An extension preserves the app's primary purpose. If a service is required for that purpose, put it directly in the base Compose file.
 
 ## Select extensions
 
@@ -70,7 +70,7 @@ Use the documented `.env` source variables for supported persistent mounts.
 ## Maintainer rules
 
 - Keep `compose.yaml` runnable without extensions.
-- Keep every service required for a stack's goal in its base Compose file.
+- Keep every service required for the app's supported purpose in its base Compose file.
 - Give each extension one clear purpose.
 - Use `compose.<feature>.yaml` names.
 - Do not use extensions for ordinary port, locale or bind-address changes.

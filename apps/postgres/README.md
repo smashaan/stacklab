@@ -1,5 +1,3 @@
-<img src="../../docs/assets/postgres/postgres_logo.svg" alt="PostgreSQL logo" width="150">
-
 # PostgreSQL
 
 PostgreSQL is an open-source relational database focused on reliability, data integrity and extensibility. This setup runs one password-protected PostgreSQL server for local applications and development.
@@ -41,7 +39,7 @@ Wait for the service to report healthy, then confirm the server responds:
 
 ```bash
 docker compose exec postgres sh -c \
-  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT version();"'
+  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT version()"'
 ```
 
 Local programs connect to `127.0.0.1:5432` using the username, password and database from `.env`. Prefer `127.0.0.1` over `localhost` when a client chooses Unix sockets for `localhost`.
@@ -50,14 +48,16 @@ For a persistence check, create a disposable table, insert a row, restart Postgr
 
 ```bash
 docker compose exec postgres sh -c \
-  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c \
-  "CREATE TABLE stacklab_check (value text); INSERT INTO stacklab_check VALUES ('persistent');"'
+  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" \
+  -c "CREATE TABLE stacklab_check (value integer)" \
+  -c "INSERT INTO stacklab_check VALUES (1)"'
 
 docker compose restart postgres
 
 docker compose exec postgres sh -c \
-  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c \
-  "TABLE stacklab_check; DROP TABLE stacklab_check;"'
+  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" \
+  -c "TABLE stacklab_check" \
+  -c "DROP TABLE stacklab_check"'
 ```
 
 ## Configuration

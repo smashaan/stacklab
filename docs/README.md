@@ -1,10 +1,10 @@
 # Documentation
 
-Shared documentation lives here. Deployment-specific setup, configuration and recovery instructions remain in the relevant app or stack directory.
+Shared documentation lives here. Deployment-specific setup, configuration and recovery instructions remain in the relevant app directory.
 
 ## Find a deployment
 
-- [App and stack catalog](catalog.md): available deployments and their purpose
+- [Deployment catalog](catalog.md): available deployments and their purpose
 - [Wishlist](wishlist.md): future ideas that are not supported deployments or a delivery commitment
 
 ## Operate deployments
@@ -17,7 +17,8 @@ Shared documentation lives here. Deployment-specific setup, configuration and re
 ## Maintain the repository
 
 - [Deployment standard](standards.md): required structure, configuration, storage, documentation and testing rules
+- [Project scope](scope.md): supported deployments, boundaries and optional tooling
 - [Contributing guide](../CONTRIBUTING.md): workflow for adding or revising a deployment
 - [Security policy](../SECURITY.md): reporting and secure-use guidance
 
-Documentation images and their storage conventions are described in [assets/README.md](assets/README.md).
+Shared and deployment-specific image conventions are described in [assets/README.md](assets/README.md).

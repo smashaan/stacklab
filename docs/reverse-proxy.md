@@ -1,10 +1,10 @@
 # Reverse proxy
 
-Many self-hosted applications can be exposed through a reverse proxy such as Caddy, nginx or Traefik. This repository keeps reverse-proxy integration optional so that each stack remains usable without a particular domain or proxy setup.
+Many self-hosted applications can be exposed through a reverse proxy such as Caddy, nginx or Traefik. This repository keeps reverse-proxy integration optional so that each deployment remains usable without a particular domain or proxy setup.
 
 ## Recommended approach
 
-- Run the reverse proxy as its own stack.
+- Run the reverse proxy as its own deployment.
 - Create an external Docker network only for proxy-connected services.
 - Attach only services that should be exposed through the proxy.
 - Keep internal services, such as databases, off the proxy network.
@@ -17,7 +17,7 @@ Create the network once:
 docker network create stacklab-proxy
 ```
 
-Use it in a reverse-proxy stack:
+Use it in a reverse-proxy deployment:
 
 ```yaml
 networks:

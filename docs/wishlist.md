@@ -1,6 +1,6 @@
 # Deployment wishlist
 
-These are possible future apps and stacks. Inclusion here does not mean that a deployment is supported, scheduled or committed. Numbers are stable references, not priorities. Move an item to the [catalog](catalog.md) only after its configuration and documentation are added to the repository.
+These are possible future product deployments. Inclusion here does not mean that a deployment is supported, scheduled or committed. Numbers are stable references, not priorities. Move an item to the [catalog](catalog.md) only after its configuration and documentation are added to the repository.
 
 | # | Candidate | Category | Why consider it |
 |---|---|---|---|

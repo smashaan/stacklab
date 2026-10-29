@@ -1,5 +1,3 @@
-<img src="../../docs/assets/n8n/n8n_logo.svg" alt="n8n logo" width="150">
-
 # n8n
 
 n8n is a workflow-automation platform for connecting services, transforming data and running scheduled or event-driven processes. This setup maintains one self-hosted n8n instance with its supported SQLite database.

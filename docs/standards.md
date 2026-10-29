@@ -6,10 +6,7 @@ Provide one understandable Compose deployment with enough instructions to start 
 
 Docker Compose on one host is the supported deployment format.
 
-Classify a deployment by the main reason a user installs it. An app provides one primary product. Its Compose file can include services required for every supported installation, such as a dedicated database or cache.
-
-A stack connects two or more independently useful products for a shared goal.
-Each product has a meaningful role in the combined solution rather than only supporting one primary product.
+Classify a deployment by the main reason a user installs it. Each directory under `apps/` provides one primary product. Its Compose file can include services required for every supported installation, such as a dedicated database or cache.
 
 Keep the base Compose file useful by itself. Do not fill it with commented services or profiles. Put optional services, devices and networking in named Compose files under `extensions/`. Users select only the extensions they need.
 
@@ -19,7 +16,7 @@ Plugins and integrations installed inside an application are application feature
 
 Use upstream container images and support one recommended stable image channel per deployment. Link to upstream guides for other image variants, native binaries, Kubernetes and Swarm. This repository does not publish replacement images for upstream applications.
 
-Use `apps/` for standalone products and `stacks/` for grouped solutions. Existing examples are being brought into this standard gradually.
+Use `apps/` for every supported product deployment. Multi-product workflows normally remain separate deployments connected through explicit extensions.
 
 ```text
 README.md                   # Purpose, catalog link and getting started
@@ -32,20 +29,13 @@ apps/<name>/
     compose.<feature>.yaml  # One service, device or network addition
   config/                   # Only if tracked application config is required
   docs/                     # Only for longer app-specific guides
-stacks/<name>/
-  compose.yaml              # Required: one recommended deployment
-  README.md                 # Required: setup and operation
-  .env.example              # Only if configuration is exposed
-  extensions/               # Optional additions that preserve the stack goal
-  config/                   # Only if tracked application config is required
-  docs/                     # Only for longer application-specific guides
+  assets/                   # Only for useful app-specific images or diagrams
 templates/app/              # The app contributor scaffold
-templates/stack/            # The grouped stack contributor scaffold
 docs/                       # Shared standards and Compose guidance
   README.md                 # Documentation index
   catalog.md                # Available deployments and their purpose
   wishlist.md               # Future ideas, not supported deployments
-  assets/<application>/     # Optional, small documentation images
+  assets/common/            # Optional repository-wide images
 ```
 
 No empty optional folders, category nesting, metadata schema or generator is required. Copyable configuration and a short README are the starting point.
@@ -54,7 +44,7 @@ No empty optional folders, category nesting, metadata schema or generator is req
 
 An extension adds one optional capability without changing the purpose of the base deployment. Examples include an administration interface, a device mapping or access to a shared network. Each extension must have a narrow purpose and work when merged with the base file.
 
-Apps and stacks can both have extensions. An app extension must not replace the primary product. A stack extension must not contain a product required for the stack to achieve its stated goal. Put every required stack service directly in the stack's base `compose.yaml`.
+An app extension must not replace the primary product. Put every service required for the supported product directly in the base `compose.yaml`.
 
 Select extensions with explicit, ordered `-f` arguments. Keep extension selection out of `.env`, which is reserved for deployment values. Document the complete command and use the same files for `config`, `up`, `pull`, `logs` and `down`. Before removing an extension, run `down` with the extension included so Compose can remove its containers.
 Do not commit an automatically loaded `compose.override.yaml`, because it prevents the base deployment from remaining predictable.
@@ -143,18 +133,17 @@ Changing between bind mounts and named volumes does not migrate data. Changing p
 Every README includes a useful description, prerequisites, a quick start, a first login or functional check, configuration when present, persistence, updates and upstream references.
 Stateful applications include backup and restore guidance. Stateless applications explicitly say there is no application data to back up.
 
-End each deployment guide with `About this setup`. Briefly explain which upstream example or guidance the Compose configuration follows and any meaningful changes made by this repository. Link to the official documentation, source repository, container image, release notes, license, upstream support and security policy when those resources exist. Stacks provide a short subsection with these links for every main product. Distinguish upstream product problems from issues in this repository's Compose files. Link to the upstream license instead of copying its text into the deployment guide.
+End each deployment guide with `About this setup`. Briefly explain which upstream example or guidance the Compose configuration follows and any meaningful changes made by this repository. Link to the official documentation, source repository, container image, release notes, license, upstream support and security policy when those resources exist. Distinguish upstream product problems from issues in this repository's Compose files. Link to the upstream license instead of copying its text into the deployment guide.
 
 Templates use HTML comments for contributor instructions because those comments do not appear in the rendered README. Published deployment guides must remove those comments. Use Markdown notes and warnings only for information users need while deploying or operating the application.
 
 Write each ordinary paragraph as continuous prose. Do not insert manual line breaks inside a sentence or paragraph. Keep deliberate line breaks for lists, tables, code blocks, alerts and other Markdown structures.
 
-Keep short application-specific troubleshooting in the README. Put longer recovery or deployment tutorials in the deployment's `docs/` directory. Shared Docker commands belong in root `docs/`. General product tutorials belong upstream. Remove empty sections and template instructions from published deployments.
+Keep the normal setup, configuration, operation and short application-specific troubleshooting in the README. Put substantial recovery, migration, advanced troubleshooting or deployment tutorials in the deployment's `docs/` directory. Split by operational topic rather than by every README heading. Shared Docker commands belong in root `docs/`. General product tutorials belong upstream. Remove empty sections and template instructions from published deployments.
 
-Logos are optional. When included, place the logo above the page title and use a short, specific `alt` value such as `Adminer logo`. Keep `alt` on every image for accessibility and for readers when an image cannot load. Prefer an official asset and record its source and license when attribution is required.
+Deployment READMEs do not require decorative product logos. Keep repository-wide branding and images used by multiple deployments under `docs/assets/common/`. Put a deployment-specific image under that deployment's `assets/` directory only when it explains a concrete instruction, expected result, architecture or workflow. Do not create an asset directory for deployments without useful media.
 
-Screenshots are optional. Prefer one optimized image where it helps. Aim for roughly 200 KB, with exceptions for legibility. Keep large galleries/videos external, link to upstream demos, sanitize screenshots and record attribution.
-Use existing `docs/assets/<app>/` paths to avoid unnecessary asset moves.
+Screenshots and diagrams are optional. Prefer one optimized image where it materially helps. Aim for roughly 200 KB, with exceptions for legibility. Keep large galleries and videos external, link to upstream demos, sanitize screenshots and record the source, license and attribution when required. Every Markdown or HTML image must have short, useful alternative text.
 
 ## Testing and support claims
 

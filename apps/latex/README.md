@@ -1,5 +1,3 @@
-<img src="../../docs/assets/latex/latex_logo.svg" alt="LaTeX logo" width="150">
-
 # LaTeX
 
 Compile LaTeX projects without installing TeX Live on the host. A disposable compiler container reads a host workspace and writes the PDF beside its sources.

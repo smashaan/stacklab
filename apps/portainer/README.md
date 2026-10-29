@@ -1,5 +1,3 @@
-<img src="../../docs/assets/portainer/portainer_logo.svg" alt="Portainer logo" width="150">
-
 # Portainer
 
 Portainer is a web interface for managing container environments. This setup runs Portainer Community Edition against the local, rootful Docker Engine through its Unix socket.

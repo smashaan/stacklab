@@ -1,30 +1,28 @@
-# Documentation assets
+# Shared documentation assets
 
-Store small images used by repository documentation in this directory.
+Store only repository-wide images and media used by multiple deployments in this directory. Deployment-specific screenshots and diagrams belong beside their deployment under `apps/<name>/assets/`.
 
 ## Layout
 
 ```text
 assets/
-├── common/                       # Repository-wide images
-└── application-name/             # Images for one app or stack
-    ├── application-name_logo.svg
-    ├── application-name_dashboard.png
-    └── application-name_architecture.svg
+└── common/                       # Repository-wide images
+    ├── stacklab_logo.svg
+    └── repository-architecture.svg
 ```
 
-Keep each app or stack directory flat until more organization is useful. Use lowercase, hyphenated names. Existing filenames can remain stable when renaming them would only create noisy changes.
+Do not mirror the `apps/` hierarchy here. A deployment that needs explanatory media creates its own optional `assets/` directory. Keep that directory flat until more organization is genuinely useful and use lowercase, hyphenated filenames.
 
-Prefer SVG for logos and diagrams. Use an optimized PNG when SVG is unavailable or when the image is a screenshot. Keep screenshots small enough to review in Git while preserving readable text.
+Prefer SVG for repository branding and diagrams. Use an optimized PNG when SVG is unavailable or when the image is a screenshot. Keep screenshots small enough to review in Git while preserving readable text.
 
-Prefer official project assets. Record the source and license when attribution is required. Do not assume that an open source application license automatically covers its logo or trademark.
+Record the source and license when attribution is required. Do not assume that an open source application license automatically covers its logo, trademark, screenshot or other media.
 
-Reuse an existing repository asset when one is already available. Otherwise, check [Dashboard Icons](https://dashboardicons.com/) when an official project asset is not readily available. Download the file into this repository instead of embedding a CDN URL. Verify the individual icon's source, license and trademark conditions before use.
+Do not add decorative product logos merely to brand deployment READMEs. Link to an upstream demonstration instead of copying a gallery. Do not embed remote images whose content or availability is outside this repository's control.
 
 Every Markdown or HTML image must have short, useful alternative text. For example:
 
-```html
-<img src="../../docs/assets/adminer/adminer_logo.svg" alt="Adminer logo" width="150">
+```markdown
+![Proxy network architecture](assets/proxy-network.svg)
 ```
 
 Do not include credentials, private domains, internal IP addresses or personal data in screenshots.

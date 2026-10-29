@@ -18,14 +18,18 @@ backup without closing your interactive terminal:
   BACKUP_DIR="$HOME/stacklab-backups/stirling-pdf/$(date -u +%Y%m%dT%H%M%SZ)"
   mkdir -p "$BACKUP_DIR"
   cp compose.yaml "$BACKUP_DIR/compose.yaml"
-  if [ -f .env ]; then cp .env "$BACKUP_DIR/.env"; fi
+  if [ -f .env ]
+  then
+    cp .env "$BACKUP_DIR/.env"
+  fi
   docker compose -f compose.yaml config --images > "$BACKUP_DIR/images.txt"
   IMAGE_ID="$(docker compose -f compose.yaml images -q stirling-pdf)"
   docker image inspect "$IMAGE_ID" --format '{{index .RepoDigests 0}}' \
     > "$BACKUP_DIR/image-digest.txt"
   docker image inspect "$IMAGE_ID" > "$BACKUP_DIR/image-inspect.json"
   docker compose -f compose.yaml stop stirling-pdf
-  for directory in configs storage customFiles pipeline tessdata logs; do
+  for directory in configs storage customFiles pipeline tessdata logs
+  do
     docker compose -f compose.yaml cp "stirling-pdf:/$directory" - > "$BACKUP_DIR/$directory.tar"
     tar -tf "$BACKUP_DIR/$directory.tar" > /dev/null
   done
@@ -55,7 +59,8 @@ Review `image-digest.txt` before restoring. The saved Compose file uses a moving
   export STIRLING_PDF_PORT=18080
   export STIRLING_PDF_BIND_ADDRESS=127.0.0.1
   docker compose -f compose.yaml -p "$RESTORE_PROJECT" create stirling-pdf
-  for directory in configs storage customFiles pipeline tessdata logs; do
+  for directory in configs storage customFiles pipeline tessdata logs
+  do
     tar -tf "$BACKUP_DIR/$directory.tar" > /dev/null
     docker compose -f compose.yaml -p "$RESTORE_PROJECT" cp --archive - stirling-pdf:/ < "$BACKUP_DIR/$directory.tar"
   done

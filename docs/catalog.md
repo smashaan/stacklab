@@ -1,6 +1,6 @@
-# App and stack catalog
+# Deployment catalog
 
-Apps are standalone products. Stacks connect separate products for a shared goal. This catalog is the repository's deployment inventory. A listed deployment is not automatically suitable for every production environment.
+This catalog is the repository's inventory of supported product deployments. A listed deployment is not automatically suitable for every production environment.
 
 ## Apps
 
@@ -22,9 +22,3 @@ Apps are standalone products. Stacks connect separate products for a shared goal
 | [Traefik](../apps/traefik/README.md) | Route traffic to services |
 
 Nextcloud remains an app even though its deployment includes a required database. PostgreSQL and Adminer are separate apps that can communicate through their shared-network extensions.
-
-## Stacks
-
-| Stack | Goal |
-| --- | --- |
-| [Digital twin](../stacks/digital-twin/README.md) | Database, API and web interface |

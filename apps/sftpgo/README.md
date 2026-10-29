@@ -1,5 +1,3 @@
-<img src="../../docs/assets/sftpgo/sftpgo_logo.png" alt="SFTPGo logo" width="150">
-
 # SFTPGo
 
 Share files through SFTP and a browser with managed users, permissions and quotas. This app runs the SFTPGo Community edition with its built-in WebAdmin, WebClient and SQLite database.

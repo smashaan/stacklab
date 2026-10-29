@@ -1,5 +1,3 @@
-<img src="../../docs/assets/nextcloud/nextcloud_logo.svg" alt="Nextcloud logo" width="150">
-
 # Nextcloud
 
 Nextcloud provides self-hosted file synchronization, sharing and collaboration. This deployment includes the Apache application image, a dedicated MariaDB database, Redis for caching and transactional file locking, and the upstream cron worker for background jobs.

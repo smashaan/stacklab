@@ -1,5 +1,3 @@
-<img src="../../docs/assets/nginx/nginx_logo.svg" alt="nginx logo" width="150">
-
 # nginx
 
 nginx is an HTTP web server and reverse proxy. This deployment provides a small, read-only static-site server with a tracked configuration, a health check and an optional external network for proxying to other containers.
@@ -68,7 +66,7 @@ docker compose config
 docker compose up -d
 ```
 
-nginx reads the content as UID `101` in the container, although the master process starts as root. Files need only be readable and directories traversable; nginx does not need write permission. Avoid mounting secrets or unrelated parent directories as the document root.
+nginx reads the content as UID `101` in the container, although the master process starts as root. Files need only be readable and directories traversable. nginx does not need write permission. Avoid mounting secrets or unrelated parent directories as the document root.
 
 ## Configuration
 
@@ -79,7 +77,7 @@ nginx reads the content as UID `101` in the container, although the master proce
 | `NGINX_CONTENT_SOURCE` | `./html` | Read-only static-content directory |
 | `NGINX_PROXY_NETWORK` | `stacklab-proxy` | Existing network used only by the proxy-network extension |
 
-Changing the content source does not copy files. Keep the old and new directories until the new site has been verified. A relative source is resolved from this app directory; use an absolute path for content stored outside the checkout.
+Changing the content source does not copy files. Keep the old and new directories until the new site has been verified. A relative source is resolved from this app directory. Use an absolute path for content stored outside the checkout.
 
 The maintained virtual host is in `config/default.conf`. Run the built-in syntax check after editing it:
 
@@ -102,13 +100,13 @@ docker compose -f compose.yaml \
   -f extensions/compose.proxy-network.yaml up -d
 ```
 
-Attach only the application containers nginx must reach to the same network. Then replace or extend `config/default.conf` with a reviewed `proxy_pass` configuration. Use the same two Compose files for `pull`, `logs`, `up` and `down`; run `down` with both files before disabling the extension.
+Attach only the application containers nginx must reach to the same network. Then replace or extend `config/default.conf` with a reviewed `proxy_pass` configuration. Use the same two Compose files for `pull`, `logs`, `up` and `down`. Run `down` with both files before disabling the extension.
 
 nginx does not discover Docker services or request certificates automatically. If label-driven routing and automatic ACME are the goal, use the repository's [Traefik deployment](../traefik/README.md). See the [shared reverse-proxy guidance](../../docs/reverse-proxy.md) before publishing applications.
 
 ## Your data
 
-The content selected by `NGINX_CONTENT_SOURCE` is the only user data in the base deployment. It is mounted read-only and remains in its host directory when the container is recreated or removed. The nginx configuration and example page are tracked in Git; cache and PID files live in temporary filesystems and are disposable.
+The content selected by `NGINX_CONTENT_SOURCE` is the only user data in the base deployment. It is mounted read-only and remains in its host directory when the container is recreated or removed. The nginx configuration and example page are tracked in Git. Cache and PID files live in temporary filesystems and are disposable.
 
 ## Back up and restore
 

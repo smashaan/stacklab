@@ -1,5 +1,3 @@
-<img src="../../docs/assets/node-red/node-red_logo.svg" alt="Node-RED logo" width="150">
-
 # Node-RED
 
 Node-RED is a visual, event-driven programming environment for connecting devices, APIs and services. This setup runs one authenticated editor with persistent flows, installed nodes and encrypted credentials.

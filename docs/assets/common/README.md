@@ -1,10 +1,10 @@
 # Common assets
 
-Place repository-wide assets here:
+Place only repository-wide assets or media reused by multiple deployments here:
 
-- `logo.svg`
+- `stacklab_logo.svg`
 - `banner.png`
 - `repository-architecture.svg`
-- Screenshots used by multiple stack READMEs
+- Screenshots or diagrams used by multiple deployment READMEs
 
-Use lowercase, hyphenated filenames.
+Use lowercase filenames and hyphens for word separators when adding new files. Record the source, license and required attribution for third-party media.

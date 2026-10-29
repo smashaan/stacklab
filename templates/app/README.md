@@ -1,8 +1,3 @@
-<!-- TODO: Reuse an existing repository asset when available. Otherwise follow
-docs/assets/README.md to source and document the app logo. Replace the path and
-use short alt text such as "Adminer logo". -->
-<img src="../../docs/assets/APPNAME/APPNAME_logo.svg" alt="APPNAME logo" width="150">
-
 <!-- TODO: Replace this title with the application name. -->
 # Application name
 
@@ -170,5 +165,9 @@ belong in this repository's issue tracker. -->
 - [Upstream support](https://example.com/support)
 - [Security policy](https://example.com/security)
 
-<!-- Add config/ only for tracked configuration and docs/ only for useful longer
-guides. Do not create empty directories. -->
+<!-- Add config/ only for tracked runtime configuration. Keep the normal setup,
+operation and a short troubleshooting table in this README. Add docs/ only for
+substantial procedures such as backup and restore, migration, recovery or
+advanced troubleshooting. Add assets/ only for deployment-specific screenshots
+or diagrams that explain a concrete instruction. Repository-wide media belongs
+in ../../docs/assets/common/. Do not create empty directories. -->
